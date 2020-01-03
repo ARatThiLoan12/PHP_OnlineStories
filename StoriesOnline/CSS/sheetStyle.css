@@ -91,3 +91,78 @@
 	background-color: #518ff3;
 	color:#ffffff;
 }
+
+/*Login*/
+
+.title{
+	text-align: center;
+	padding: 50px 0 20px;
+}
+.title h1{
+	margin: 0;
+	padding: 0;
+	color: #262626;
+	text-transform: uppercase;
+	font-size: 36;
+}
+.container2{
+	height: 400px;
+	width: 50%;
+	background: #fff;
+	margin: 0 auto;
+	border: 2px solid #fff;
+	box-shadow: 0 15px 40px rgba(0, 0, .5);
+}
+.container2 .left{
+	float: left;
+	width: 50%;
+	height: 400px;
+	background: url(../img/cover-img.png);
+	background-size: cover;
+	box-sizing: border-box;
+}
+.container2 .right{
+	float: right;
+	width: 50%;
+	height: 400px;
+	box-sizing: border-box;
+}
+.formBox{
+	margin: 0;
+	padding: 0;
+	padding: 40px 40px;
+	font-weight: bold;
+	color: #a6af13; 
+}
+.formBox input{
+	margin-bottom: 5px;
+	width: 100%;
+}
+.formBox input[type="text"],
+.formBox input[type="Password"]{
+	border: none;
+	border-bottom: 2px solid #a6af13;
+	outline: none;
+	height: 40px;
+}
+.formBox input[type="text"]:focus,
+.formBox input[type="Password"]:focus{
+	border-bottom: 2px solid #262626;
+}
+.formBox input[type="submit"]{
+	height: 40px;
+	outline: none;
+	border: none;
+	color: #fff;
+	background: #262626;
+	cursor: pointer;
+}
+.formBox input[type="submit"]:hover{
+	background: #a6af13;
+}
+.formBox a{
+	text-decoration: none;
+	color: #262626;
+	font-size: 12px;
+	font-weight: bold;
+}
