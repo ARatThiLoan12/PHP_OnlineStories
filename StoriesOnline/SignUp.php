@@ -1,42 +1,19 @@
 <?php
-global $result;
 $db= new mysqli("localhost","root","","storiesonline");
 $sql = "SELECT * FROM account";
 $result = $db->query($sql)->fetch_all();
 
-function get_login($name,$pass){
-	global $result;
-	global $checkLogin;
-	$check=false;      
-	for($i=0;$i<count($result);$i++){
-		if($result[$i][1]==$name && $result[$i][2]==$pass){
-			?>
-			<script>
-				location.href = "UI2.php";
-				console.log("1"); 
-			</script>
-			<?php
-			echo "1";
-			$arr=array($name,$pass);
-			$_SESSION['login'] = $arr;
-			$checkLogin=true;  
-			$check=true;
-			return $name;
-		}
-	}
-	if($check==false){
-		?>
-		<script>
-			alert("login fail");                 
-		</script>
+if(isset($_POST["signup"])){
+	$name = $_POST['username'];
+	$pwd = $_POST['password'];
+	$cf = $_POST['confirm'];
 
-		<?php
-	}
-}
-if(isset($_POST['login'])){
-	$name=$_POST['username'];
-	$pass=$_POST['password'];
-	get_login($name,$pass);
+	if($pwd==$cf){
+		$sql = "INSERT INTO account VALUES (null,'".$name."','".$pwd ."','User')";
+		$db->query($sql);
+		// doan nay chua toi uu
+		header("Location: UI2.php");
+	}else header("Location: SignUp.php");
 }
 ?>
 <!DOCTYPE html>
@@ -56,7 +33,7 @@ if(isset($_POST['login'])){
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 </head>
 <body>
-	<div class="title"><h1>Sign In</h1></div>
+	<div class="title"><h1>Sign Up</h1></div>
 	<div class="container2">
 		<div class="left"></div>
 		<div class="right">
@@ -66,8 +43,9 @@ if(isset($_POST['login'])){
 					<input type="text" name="username" placeholder="Online">
 					<p><i class="fas fa-lock" style="margin-right: 5px;"></i>Password</p>
 					<input type="Password" name="password" placeholder="******">
-					<input type="submit" name="login" value="Sign In">
-					<a href="#">Forget Password?</a>
+					<p><i class="fas fa-lock" style="margin-right: 5px;"></i>Confirm password</p>
+					<input type="Password" name="confirm" placeholder="******">
+					<input type="submit" name="signup" value="Sign Up">
 				</form>
 			</div>
 		</div>

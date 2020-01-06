@@ -20,10 +20,8 @@ $result = $db->query($sql)->fetch_all();
 				</button>
 				<h3 style="color: white">Đọc Truyện Online - Kho Truyện Của Loan</h3>
 				<div id="login">
-					<button class="btn"><a href="Login.php">  
-						<i class="fas fa-sign-in-alt"></i>LogIn</a></button>
-					<button class="btn">
-						<a href="SignUp.php"><i class="far fa-user"></i>SignUp</a></button>
+					<button class="btn"><a href="UI.php">  
+						<i class="fas fa-sign-in-alt"></i>LogOut</a></button>
 				</div>
 			</nav>
 		</div>
