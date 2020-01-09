@@ -1,6 +1,7 @@
 <?php
+
+require 'connectdatabase.php';
 global $result;
-$db= new mysqli("localhost","root","","storiesonline");
 $sql = "SELECT * FROM account";
 $result = $db->query($sql)->fetch_all();
 
@@ -10,13 +11,19 @@ function get_login($name,$pass){
 	$check=false;      
 	for($i=0;$i<count($result);$i++){
 		if($result[$i][1]==$name && $result[$i][2]==$pass){
+			if($result[$i][3]=="User"){
 			?>
 			<script>
 				location.href = "UI2.php";
-				console.log("1"); 
 			</script>
 			<?php
-			echo "1";
+			}else{
+				?>
+			<script>
+				location.href = "admin.php";
+			</script>
+			<?php
+			}
 			$arr=array($name,$pass);
 			$_SESSION['login'] = $arr;
 			$checkLogin=true;  

@@ -29,39 +29,24 @@ $result = $db->query($sql)->fetch_all();
 		</div>
 	</header>
 	<div class="container">
-		<div class="row">
-			<!-- truyen1 -->
-			<?php for ($i=0; $i < count($result); $i++) { ?>
-
-				<div class="col-md-4">
-					<div class="product">
-						<div class="img-box ">
-							<?php echo " <img src='img/".$result[$i][4]."'>"; ?>
-						</div>
-						<div class="details">
-							<h2><?php echo $result[$i][1]; ?><br><?php echo $result[$i][2]; ?></h2>
-							<div class="prich "><?php echo $result[$i][3]; ?></div>
-							<div>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star-half"></i>
-							</div>
-							<p>
-								<?php echo $result[$i][5]; ?>
-							</p>
-							<div class="overlay">
-								<button type="button" class="btn btn-secondary"><i class="fas fa-book-reader"></i></button>
-								<button type="button" class="btn btn-secondary"><i class="far fa-heart"></i></button>
-								<button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"></i></button>
-							</div>
-						</div>
-					</div>
-				</div>
-			<?php } ?>
-		</div>
-	</div>
+	<p>Triệu Mặc Sênh lặng người nhìn cặp trai gái đứng trước quầy bán rau, một lần nữa chị cảm nhận sự lạ lùng của số phận. Bảy năm trước, chính họ khiến chị quyết định ra đi. Bây giờ họ lại cùng nhau đi mua sắm, vậy là cuối cùng họ vẫn cùng nhau! May mà hồi ấy chị bỏ ra đi, nếu không…Mặc Sênh không dám nghĩ thêm…</p>
+	<p>Hà Dĩ Thâm, Hà Dĩ Văn, sao mình ngốc thế, tại sao cứ một mực cho rằng hai người ấy tên giống nhau thì nhất định là anh em?</p>
+	<p>“Chúng tôi không phải là anh em, trước đây hai gia đình chúng tôi là hàng xóm của nhau, đều họ Hà cho nên cũng đặt tên cho các con giống nhau. Về sau, cha mẹ Dĩ Thâm đột ngột qua đời, cha mẹ tôi nhận nuôi Dĩ Thâm.”</p>
+	<p>“Chị tưởng, chị mạnh hơn tình cảm hai mươi năm giữa tôi và Dĩ Thâm sao?”</p>
+	<p>“Hôm nay tôi chính thức cho chị biết, tôi yêu Dĩ Thâm, nhưng tôi không muốn yêu thầm yêu vụng. Tôi và chị sẽ cạnh tranh công khai.”</p>
+	<p>Năm19 tuổi, một ngày trước sinh nhật Mặc Sênh, cô bạn gái Hà Dĩ Văn vốn điềm đạm, bỗng nhiên thẳng thắn tuyên bố với chị. Một người dịu dàng, không bao giờ tranh giành với ai như Dĩ Văn mà quả quyết như vậy, chắc hẳn cô ấy phải yêu Dĩ Thâm nhiều lắm.</p>
+	<p>Còn chị? Chị có gì để cạnh tranh với Dĩ Văn? Chính vào ngày Dĩ Văn tuyên chiến, chị đã thua, sau đó chị đã chạy trốn sang Mỹ suốt bảy năm trời.</p>
+	<p>Ôi, Hà Dĩ Thâm” – Nghĩ đến ánh mắt lạnh lùng, những lời nói tuyệt tình của anh ta, Mặc Sênh thấy nhoi nhói trong lòng. Tuy cảm giác rất mơ hồ, khó nhận ra, nhưng chắc chắn là có thật.</p>
+	<p>Anh đi về phía chị, bàn tay Mặc Sênh nắm chặt tay đẩy xe hàng đến mức các đầu khớp ngón tay trắng bệch, như sắp long ra. Nhưng siêu thị lúc đó quá đông, chị lại đang đẩy cái xe chứa hàng nên hoàn toàn không thể dễ dàng quay người bỏ chạy. Tuy nhiên ngay lập tức chị nghĩ, vì sao mình phải lẩn tránh? Mình nên bình thản nói với họ một câu đại loại: “Ồ, đã lâu không gặp.”</p>
+	<p>Rồi kiêu hãnh quay đi, để lại cho họ một hình ảnh đẹp về mình mới phải.</p>
+	<p>Nhưng, có thể họ không nhận ra mình. Có thể lắm chứ, mình đã thay đổi nhiều, mái tóc dài buông xõa năm xưa giờ biến thành mái tóc ngắn chấm tai, làn da trắng nõn ngày nào giờ đã sạm đi nhiều bởi cái nắng bang California, lại còn quần bò, áo phông rộng thùng thình, giày thể thao, khác xưa nhiều quá!</p>
+	<p>Họ bước từng bước, chầm chậm tiến lại gần nhau, rồi… lướt qua nhau.</p>
+	<p>Đau đớn quá!</p>
+	<p>Hình như có tiếng nói vẳng lại.</p>
+	<p>“Có cần mua thêm sữa không?” – Đúng là tiếng Dĩ Văn rồi, vẫn nhỏ nhẹ như xưa.</p>
+	<p>Chị không nghe rõ câu trả lời. Nhớ quá, giọng nói trầm ấm như tiếng vĩ cầm của Dĩ Thâm luôn vẳng bên tai Mặc Sênh trong suốt bảy năm chị lưu lạc xứ người.</p>
+	<p>Hẫng hụt, nhưng đồng thời cũng thấy nhẹ nhõm. Mặc Sênh ngẩng đầu nãy giờ vẫn cúi, quả quyết bước đi.</p>
+</div>
 	<div class="foot">
 		<h5>Liên hệ: (+84) 911 475 691</h5>
 		<p>Chúc bạn đọc truyện vui vẻ :)</p>

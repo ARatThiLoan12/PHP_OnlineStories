@@ -1,5 +1,5 @@
 <?php
-$db= new mysqli("localhost","root","","storiesonline");
+require 'connectdatabase.php';
 $sql = "SELECT * FROM products";
 $result = $db->query($sql)->fetch_all();
 ?>
@@ -20,6 +20,9 @@ $result = $db->query($sql)->fetch_all();
 				</button>
 				<h3 style="color: white">Đọc Truyện Online - Kho Truyện Của Loan</h3>
 				<div id="login">
+					<!-- <span><?php echo $_POST['username']?></span> -->
+					<button class="btn"><a href="myFavo.php">  
+					<i class="fas fa-heart"></i>My favorite</a></button>
 					<button class="btn"><a href="UI.php">  
 						<i class="fas fa-sign-in-alt"></i>LogOut</a></button>
 				</div>
@@ -28,7 +31,6 @@ $result = $db->query($sql)->fetch_all();
 	</header>
 	<div class="container">
 		<div class="row">
-			<!-- truyen1 -->
 			<?php for ($i=0; $i < count($result); $i++) { ?>
 
 				<div class="col-md-4">
@@ -50,9 +52,10 @@ $result = $db->query($sql)->fetch_all();
 								<?php echo $result[$i][5]; ?>
 							</p>
 							<div class="overlay">
-								<button type="button" class="btn btn-secondary"><i class="fas fa-book-reader"></i></button>
-								<button type="button" class="btn btn-secondary"><i class="far fa-heart"></i></button>
-								<button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"></i></button>
+								
+								<button type="button" name="read" class="btn btn-secondary"><a href="content.php?id=<?php echo $result[$i][0]; ?>"><i class="fas fa-book-reader"></i></a></button>
+								<button type="button" name="love" class="btn btn-secondary"><i class="far fa-heart"></i></button>
+								<button type="button" name="rate" class="btn btn-secondary"><i class="far fa-thumbs-up"></i></button>
 							</div>
 						</div>
 					</div>

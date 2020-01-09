@@ -1,5 +1,5 @@
 <?php
-$db= new mysqli("localhost","root","","storiesonline");
+require 'connectdatabase.php';
 $sql = "SELECT * FROM account";
 $result = $db->query($sql)->fetch_all();
 
@@ -33,7 +33,7 @@ if(isset($_POST["signup"])){
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 </head>
 <body>
-	<div class="title"><h1>Sign Up</h1></div>
+	<div class="title"><h1>Register</h1></div>
 	<div class="container2">
 		<div class="left"></div>
 		<div class="right">

@@ -1,5 +1,5 @@
 <?php
-$db= new mysqli("localhost","root","","storiesonline");
+require 'connectdatabase.php';
 $sql = "SELECT * FROM products";
 $result = $db->query($sql)->fetch_all();
 ?>
@@ -30,7 +30,6 @@ $result = $db->query($sql)->fetch_all();
 	</header>
 	<div class="container">
 		<div class="row">
-			<!-- truyen1 -->
 			<?php for ($i=0; $i < count($result); $i++) { ?>
 
 				<div class="col-md-4">
@@ -51,11 +50,6 @@ $result = $db->query($sql)->fetch_all();
 							<p>
 								<?php echo $result[$i][5]; ?>
 							</p>
-							<div class="overlay">
-								<button type="button" class="btn btn-secondary"><i class="fas fa-book-reader"></i></button>
-								<button type="button" class="btn btn-secondary"><i class="far fa-heart"></i></button>
-								<button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"></i></button>
-							</div>
 						</div>
 					</div>
 				</div>
