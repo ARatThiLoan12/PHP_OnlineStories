@@ -2,6 +2,20 @@
 require 'connectdatabase.php';
 $sql = "SELECT * FROM products";
 $result = $db->query($sql)->fetch_all();
+
+session_start();
+$idUser = $_SESSION['id'];
+if(isset($_POST["love"])){
+	$idStory = $_POST["love"];
+
+	$check ="select idStory from cart where idUser = ".$idUser." and idStory=".$idStory.";";
+    $check_exist=$db->query($check)->fetch_all();
+    if(count($check_exist)<1){
+    	$addToFavo = "INSERT INTO cart VALUES (null, " .$idUser."," . $idStory .");";
+		$db->query($addToFavo);
+    }else echo '<script> alert("This story existed") </script>';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,10 +66,11 @@ $result = $db->query($sql)->fetch_all();
 								<?php echo $result[$i][5]; ?>
 							</p>
 							<div class="overlay">
-								
-								<button type="button" name="read" class="btn btn-secondary"><a href="content.php?id=<?php echo $result[$i][0]; ?>"><i class="fas fa-book-reader"></i></a></button>
-								<button type="button" name="love" class="btn btn-secondary"><i class="far fa-heart"></i></button>
-								<button type="button" name="rate" class="btn btn-secondary"><i class="far fa-thumbs-up"></i></button>
+								<form action="" method="POST">
+									<button type="button" name="read" class="btn btn-secondary"><a href="content.php?id=<?php echo $result[$i][0]; ?>"><i class="fas fa-book-reader"></i></a></button>
+									<button type="submit" name="love" class="btn btn-secondary" value="<?php echo $result[$i][0]; ?>"><i class="far fa-heart"></i></button>
+									<button type="button" name="rate" class="btn btn-secondary"><i class="far fa-thumbs-up"></i></button>
+								</form>
 							</div>
 						</div>
 					</div>

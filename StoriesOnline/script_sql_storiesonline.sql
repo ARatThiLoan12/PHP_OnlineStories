@@ -175,7 +175,10 @@ insert into content values
 (null, 1, "Chưa có truyện", 5),
 (null, 1, "Chưa có truyện", 6);
 
-
-select c.noStory, p.proName, p.id, c.content
-from content as c, products as p
-where c.idStory = p.id;
+drop table if exists cart;
+create table cart(
+idCart int auto_increment primary key,
+idUser int,
+FOREIGN KEY (idUser) REFERENCES account(id),
+idStory int,
+FOREIGN KEY (idStory) REFERENCES products(id));

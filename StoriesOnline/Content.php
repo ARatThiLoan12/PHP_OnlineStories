@@ -32,11 +32,9 @@
     <p><?php 
     	$id = $_GET['id'];
         $sql = "SELECT * FROM content WHERE id =" .$id;
-        $content = $db->query($sql)->fetch_all();
+		$content = $db->query($sql)->fetch_all();
         for($i=0; $i<count($content); $i++){
 	        if($id== $content[$i][3]){
-	        	echo " <img src='../".$content[$i][4]."'>";
-	        	echo  $content[$i][4];
 	        	echo $content[$i][2];
 	        }
         }

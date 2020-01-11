@@ -5,6 +5,7 @@ global $result;
 $sql = "SELECT * FROM account";
 $result = $db->query($sql)->fetch_all();
 
+session_start();
 function get_login($name,$pass){
 	global $result;
 	global $checkLogin;
@@ -26,6 +27,8 @@ function get_login($name,$pass){
 			}
 			$arr=array($name,$pass);
 			$_SESSION['login'] = $arr;
+			$_SESSION['id'] = $result[$i][0];
+			echo $_SESSION['id'];
 			$checkLogin=true;  
 			$check=true;
 			return $name;
@@ -34,7 +37,7 @@ function get_login($name,$pass){
 	if($check==false){
 		?>
 		<script>
-			alert("login fail");                 
+			alert("Login fail");                 
 		</script>
 
 		<?php
