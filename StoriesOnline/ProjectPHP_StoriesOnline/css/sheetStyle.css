@@ -1,0 +1,168 @@
+.product {
+	margin-bottom: 20px;
+	margin-top: 20px;
+	background: #f9f9f9;
+	height: 400px;
+	box-shadow: 0 5px 15px #333;
+	border-radius: 5px;
+	font-family: sans-serif;
+	position: relative;
+	overflow: hidden;
+}
+.product .img-box {
+	width: 80%;
+	margin: auto;
+	display: block;
+}
+.product .img-box img {
+	width: 90%;
+	height: 400px;
+	padding: 5px;
+}
+.product .details {
+	position: absolute;
+	bottom: -400px;
+	background: #ffff;
+	padding: 12px;
+	box-sizing: border-box;
+	transition: .35s;
+}
+.product .details .fas {
+	color: #28a745;
+	font-size: 10px;
+}
+.product .details .far {
+	color: #28a745;
+	font-size: 10px;
+}
+.product .details .overlay {
+	text-align: center;
+}
+.product .details .overlay .fas {
+	color: #fff;
+	font-size: 15px;
+}
+.product .details .overlay .far {
+	color: #fff;
+	font-size: 15px;
+}
+.product:hover {
+	transform: scale(1.1);
+}
+.product:hover .details {
+	opacity: 0.8;
+	bottom: 0;
+}
+.product .details h2 {
+	font-size: 16px;
+	opacity: 0.7;
+	font-weight: bolder;
+	text-transform: capitalize;
+	margin: 0 0 10px 0;
+}
+.product .details .prich {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	right: 10px;
+	color: red;
+	font-weight: bolder;
+}
+.product .details label {
+	color: #000;
+	font-size: 14px;
+	font-weight: bolder;
+}
+.product .details p {
+	color: #000;
+	opacity: 0.6;
+	font-size: 12px;
+}
+footer{
+	display: flex;
+	flex-direction: column;
+	background-color: #343a40;
+	color: white;
+	align-items: center;
+	justify-content: center;
+}
+.btn{
+	border-radius: 5px;
+	background-color: #518ff3;
+	color:#ffffff;
+}
+
+/*Login*/
+
+.title{
+	text-align: center;
+	padding: 50px 0 20px;
+}
+.title h1{
+	margin: 0;
+	padding: 0;
+	color: #262626;
+	text-transform: uppercase;
+	font-size: 36;
+}
+.container2{
+	height: 400px;
+	width: 50%;
+	background: #fff;
+	margin: 0 auto;
+	border: 2px solid #fff;
+	box-shadow: 0 15px 40px rgba(0, 0, .5);
+}
+.container2 .left{
+	float: left;
+	width: 50%;
+	height: 400px;
+	background: url(../img/cover-img.png);
+	background-size: cover;
+	box-sizing: border-box;
+}
+.container2 .right{
+	float: right;
+	width: 50%;
+	height: 400px;
+	box-sizing: border-box;
+}
+.formBox{
+	margin: 0;
+	padding: 0;
+	padding: 40px 40px;
+	font-weight: bold;
+	color: #a6af13; 
+}
+.formBox input{
+	margin-bottom: 5px;
+	width: 100%;
+}
+.formBox input[type="text"],
+.formBox input[type="Password"]{
+	border: none;
+	border-bottom: 2px solid #a6af13;
+	outline: none;
+	height: 40px;
+}
+.formBox input[type="text"]:focus,
+.formBox input[type="Password"]:focus{
+	border-bottom: 2px solid #262626;
+}
+.formBox input[type="submit"]{
+	height: 40px;
+	outline: none;
+	border: none;
+	color: #fff;
+	background: #262626;
+	cursor: pointer;
+}
+.formBox input[type="submit"]:hover{
+	background: #a6af13;
+}
+.formBox a{
+	text-decoration: none;
+	color: #262626;
+	font-size: 12px;
+	font-weight: bold;
+}
