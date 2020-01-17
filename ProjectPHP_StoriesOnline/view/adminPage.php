@@ -7,7 +7,7 @@ if(isset($_POST['addStory'])){
     header('location: adminPage.php');
 }
 if(isset($_POST['addChap'])){
-    $sql = "INSERT INTO content VALUES (null,'".$_POST['no'] ."','" .$_POST['content']."','". $_POST['idStory'] ."','" . $_POST['nameChap']."');";
+    $sql = "INSERT INTO content VALUES (null,'".$_POST['no'] ."','" .$_POST['nameChap']."','". $_POST['content'] ."','" . $_POST['idStory']."');";
     $db->query($sql);
     header('location: adminPage.php');
 }
@@ -21,8 +21,18 @@ if(isset($_POST['edit'])){
 	$idEdit= $_POST['edit'];
 	$name=$_POST['proName'];
 	$author=$_POST['author'];
-	$update = "UPDATE products SET proName='".$name."',author='".$author."' WHERE id=".$idEdit;
+	$type=$_POST['type'];
+	$update = "UPDATE products SET proName='".$name."',author='".$author."' ,type='".$type."' WHERE id=".$idEdit;
 	$db->query($update);
+	header("location: adminPage.php");
+}
+if(isset($_POST['editChap'])){
+	$id = $_POST['id'];
+	$chapterName=$_POST['nameChap'];
+	$chapter=$_POST['no'];
+	$story=$_POST['idStory'];
+	$sql2 = "UPDATE content SET noChap=".$chapter.",nameChap='".$chapterName."', idStory=".$story." WHERE id=" .$id;
+	$db->query($sql2);
 	header("location: adminPage.php");
 }
 ?>
@@ -60,14 +70,13 @@ if(isset($_POST['edit'])){
 				</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="" class="" data-toggle="modal" data-target="#addChap">Add new chapter</a>
+                    <a class="dropdown-item" href="" class="" data-toggle="modal" data-target="#editChap">Edit chapter</a>
                     <a class="dropdown-item" href="deleteAccount.php">Delete user</a>
                     <a class="dropdown-item" href="" class="" data-toggle="modal" data-target="#addStory">Add new story</a>
                 </div>
             </div>
 				<h3 style="color: white">Đọc Truyện Online - Kho Truyện Của Loan</h3>
 				<div id="login">
-					<button class="btn"><a href="myFavo.php">  
-					<i class="fas fa-heart"></i>Profile</a></button>
 					<button class="btn"><a href="firstInterface.php">  
 						<i class="fas fa-sign-in-alt"></i>LogOut</a></button>
 				</div>
@@ -140,6 +149,24 @@ if(isset($_POST['edit'])){
 							<input type="text" class="form-control" name="nameChap" placeholder="Chapter name"><br>
 							<input type="text" class="form-control" name="content" placeholder="Content"><br>
 			          		<button name="addChap" type="addChap" class="btn btn-danger" style="margin: auto;">Submit</button>  
+			      		</div>
+		      		</form>  
+	    		</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<div class="modal fade" id="editChap">
+	    	<div class="modal-dialog">
+	    		<div class="modal-content">
+		        	<form method="post">
+			        	<div class="modal-body">
+			        		<input type="text" class="form-control" name="id" placeholder="Which story"><br>
+							<input type="text" class="form-control" name="idStory" placeholder="Which story"><br>
+							<input type="text" class="form-control" name="no" placeholder="Number of chapter"><br>
+							<input type="text" class="form-control" name="nameChap" placeholder="Chapter name"><br>
+			          		<button  name="editChap" class="btn btn-danger" style="margin: auto;">Submit</button>  
 			      		</div>
 		      		</form>  
 	    		</div>

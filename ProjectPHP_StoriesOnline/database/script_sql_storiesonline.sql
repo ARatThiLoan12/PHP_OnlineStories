@@ -51,13 +51,14 @@ drop table if exists content;
 create table content(
 id int auto_increment primary key,
 noChap int,
+nameChap varchar(50),
 content text,
 idStory int,
 FOREIGN KEY (idStory) REFERENCES products(id)
 );
 
 insert into content values
-(null, 1, "<p>Tình yêu giống như lần đầu được nếm thử quả khế mới chín,Trong quả khế chát xanh xanh nụ cười ngốc nghếch, ngọt ngào của anh, tình đầu thơ ngây, trong sáng của em lặng lẽ nảy mầm.</p>
+(null, 1,"Thẩm Thiên Tình", "<p>Tình yêu giống như lần đầu được nếm thử quả khế mới chín,Trong quả khế chát xanh xanh nụ cười ngốc nghếch, ngọt ngào của anh, tình đầu thơ ngây, trong sáng của em lặng lẽ nảy mầm.</p>
 	<p>Tôi tên là Thẩm Thiên Tình.</p>
 <p>Nếu nói đến cuộc đời tôi, chỉ e khó lòng kể hết trong một chốc một lát, sợ mọi người đọc sẽ thấy nặng đầu buồn ngủ, vậy nên tôi sẽ chỉ chọn vài trọng điểm để nói.</p>
 <p>Cái gọi là “cuộc đời tôi” thật ra cũng chẳng dài, tính đến nay mới có mười bốn năm, ba trăm hai mươi bảy ngày, tám giờ, năm giây mà thôi.</p>
@@ -136,7 +137,7 @@ insert into content values
 <p>Ham muốn chiếm hữu anh trai của tôi khá cao, điều này tôi chưa từng phủ nhận.</p>
 <p>Dần dần tôi bắt đầu hiểu ra, đằng sau ham muốn chiếm hữu mãnh liệt này là gì. Đó chính là tình cảm của một thiếu nữ mười bốn tuổi…</p>
 " ,1),
-(null, 1, "<p>Triệu Mặc Sênh lặng người nhìn cặp trai gái đứng trước quầy bán rau, một lần nữa chị cảm nhận sự lạ lùng của số phận. Bảy năm trước, chính họ khiến chị quyết định ra đi. Bây giờ họ lại cùng nhau đi mua sắm, vậy là cuối cùng họ vẫn cùng nhau! May mà hồi ấy chị bỏ ra đi, nếu không…Mặc Sênh không dám nghĩ thêm…</p>
+(null, 1,"Gặp gỡ", "<p>Triệu Mặc Sênh lặng người nhìn cặp trai gái đứng trước quầy bán rau, một lần nữa chị cảm nhận sự lạ lùng của số phận. Bảy năm trước, chính họ khiến chị quyết định ra đi. Bây giờ họ lại cùng nhau đi mua sắm, vậy là cuối cùng họ vẫn cùng nhau! May mà hồi ấy chị bỏ ra đi, nếu không…Mặc Sênh không dám nghĩ thêm…</p>
 	<p>Hà Dĩ Thâm, Hà Dĩ Văn, sao mình ngốc thế, tại sao cứ một mực cho rằng hai người ấy tên giống nhau thì nhất định là anh em?</p>
 <p>“Chúng tôi không phải là anh em, trước đây hai gia đình chúng tôi là hàng xóm của nhau, đều họ Hà cho nên cũng đặt tên cho các con giống nhau. Về sau, cha mẹ Dĩ Thâm đột ngột qua đời, cha mẹ tôi nhận nuôi Dĩ Thâm.”</p>
 <p>“Chị tưởng, chị mạnh hơn tình cảm hai mươi năm giữa tôi và Dĩ Thâm sao?”</p>
@@ -153,7 +154,7 @@ insert into content values
 <p>“Có cần mua thêm sữa không?” – Đúng là tiếng Dĩ Văn rồi, vẫn nhỏ nhẹ như xưa.</p>
 <p>Chị không nghe rõ câu trả lời. Nhớ quá, giọng nói trầm ấm như tiếng vĩ cầm của Dĩ Thâm luôn vẳng bên tai Mặc Sênh trong suốt bảy năm chị lưu lạc xứ người.</p>
 <p>Hẫng hụt, nhưng đồng thời cũng thấy nhẹ nhõm. Mặc Sênh ngẩng đầu nãy giờ vẫn cúi, quả quyết bước đi.</p>", 2),
-(null, 2, "<p>Tôi tên là Thẩm Hàn Vũ.</p>
+(null, 2,"Thẩm Hàn Vũ", "<p>Tôi tên là Thẩm Hàn Vũ.</p>
 	<p>Cuộc đời tôi thực ra cũng chẳng có gì cao trào, kịch tính, tất cả đều xoay quanh một trọng tâm duy nhất là cô gái có tên Thẩm Thiên Tình.</p>
 	<p>Cái gọi là “cuộc đời tôi” thật ra cũng chẳng dài, tính tới bây giờ mới được mười bảy năm, hai trăm bốn mươi ngày, chín giờ, ba mươi lăm phút, chín giây mà thôi.</p>
 	<p>Từ nhỏ tới lớn, nhận xét của giáo viên về tôi nói chung đều quanh đi quẩn lại mấy từ như: phẩm hạnh tốt, biểu hiện xuất sắc, ham học, có chí tiến thủ. Kỳ thực, đó cũng chỉ là vì hoàn cảnh gia đình, muốn lĩnh học bổng ấy mà.</p>
@@ -171,9 +172,10 @@ insert into content values
 	<p>Điều khác thường nhất là, có một năm thu hoạch ruộng, cha mẹ không yên tâm để hai đứa trẻ ở nhà, liền đem chúng tôi theo, lúc đó Tình đã biết bò, đang học đi, cà ngày bò đi bò lại, hãnh diện thể hiện thành quả, không biết loay hoay thế nào lại bò lên đống rạ đầy, cuối cùng không xuống được. Chẳng ai biết rốt cuộc làm thế nào mà con bé bò lên được trên đó, người lớn cũng không biết phải cứu kiểu gì. Nghe nói, nếu mà ngã từ độ cao đó xuống thì đủ khiến đứa trẻ chưa đầy một tuổi không biết trời cao đất dày ấy phải bỏ mạng.</p>
 	<p>Tuổi thơ của con bé chỉ toàn là mạo hiểm và kích động.</p>
 	<p>Thiên Tình là do một tay tôi chăm bẵm, có thể nói, tôi là người thân thiết nhất của nó, không ai có thể hiểu con bé hơn tôi, khi nó bi bô tập nói, từ đầu tiên biết gọi không phải cha, cũng không phải mẹ, mà là anh.</p>", 1),
-(null, 1, "Chưa có truyện", 4),
-(null, 1, "Chưa có truyện", 5),
-(null, 1, "Chưa có truyện", 6);
+(null, 1,"Chưa có truyện", "Chưa có truyện", 3),
+(null, 1,"Chưa có truyện", "Chưa có truyện", 4),
+(null, 1,"Chưa có truyện", "Chưa có truyện", 5),
+(null, 1,"Chưa có truyện", "Chưa có truyện", 6);
 
 drop table if exists cart;
 create table cart(
@@ -182,3 +184,4 @@ idUser int,
 FOREIGN KEY (idUser) REFERENCES account(id),
 idStory int,
 FOREIGN KEY (idStory) REFERENCES products(id));
+

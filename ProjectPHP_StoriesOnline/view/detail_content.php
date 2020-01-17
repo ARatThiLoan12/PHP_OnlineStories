@@ -5,7 +5,7 @@
 
     $sql = "SELECT content
 	FROM content 
-	WHERE chapName='".$name."'";
+	WHERE nameChap='".$name."'";
 	$chapname=$db->query($sql)->fetch_all();
     $resultChap=$chapname[0][0];
 

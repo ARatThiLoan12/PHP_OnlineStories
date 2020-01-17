@@ -3,7 +3,7 @@
 
     $id = $_GET['id'];
 
-    $sql = "SELECT C.idStory ,C.chapName, P.proName, P.author, P.type, P.img, P.details, C.id
+    $sql = "SELECT C.idStory ,C.nameChap, P.proName, P.author, P.type, P.img, P.details, C.id
 	FROM products as P, content as C 
 	WHERE P.id = C.idStory and
 	C.idStory = ".$id.";";
@@ -27,7 +27,7 @@
     <div class="container">
         <div>
             <p><?php 
-                $chapter = 1;
+                $chapter = 0;
                 $j=0;
                 for($i=0; $i<count($content); $i++){
         	        if($id == $content[$i][0]){
@@ -36,10 +36,10 @@
                 }
                 echo '<div style="display:flex; justify-content: space-between;"><img src="../img/'.$content[$j][5].'">';
                 echo '<div>';
-                    echo '<p> Ten truyen:'.$content[$j][2].'</p>';
-                    echo '<p>Tac gia:'.$content[$j][3].'</p>';
-                    echo '<p>The loai:'.$content[$j][4].'</p>';
-                    echo '<p>Tom tat:'.$content[$j][6].'</p>';
+                    echo '<p> Tên truyện:'.$content[$j][2].'</p>';
+                    echo '<p>Tác giả:'.$content[$j][3].'</p>';
+                    echo '<p>Thể loại:'.$content[$j][4].'</p>';
+                    echo '<p>Tóm tắt:'.$content[$j][6].'</p>';
                 echo '</div></div>';
                 echo "List of chapter: ";
                 echo "<form action='detail_content.php' method='get'>";
