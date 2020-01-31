@@ -43,8 +43,10 @@ if(isset($_POST["love"])){
 							<?php echo " <img src='../img/".$story[$i]->img."'>"; ?>
 						</div>
 						<div class="details">
-							<h2><?php echo $story[$i]->name; ?><br><?php echo $story[$i]->author; ?></h2>
-							<div class="prich "><?php echo $story[$i]->type; ?></div>
+							<div class="flex-container">
+								<div class="intro"><?php echo $story[$i]->name; ?><br><?php echo $story[$i]->author; ?></div>
+								<div class="prich "><?php echo $story[$i]->type; ?></div>
+							</div>
 							<div>
 								<i class="fas fa-star"></i>
 								<i class="fas fa-star"></i>

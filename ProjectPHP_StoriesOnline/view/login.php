@@ -10,14 +10,12 @@ function login($name,$pass){
 	for($i=0;$i<count($user);$i++){
 		if($user[$i]->userName==$name && $user[$i]->password==$pass){
 			if($user[$i]->canRead()){
-				echo "read";
 			?>
 			<script>
 				location.href = "userInterface.php";
 			</script>
 			<?php
 			}else if($user[$i]->canManage()){
-				echo "manage";
 				?>
 			<script>
 				location.href = "adminPage.php";

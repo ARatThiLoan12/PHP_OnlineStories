@@ -6,7 +6,7 @@
     $db = new mysqli("localhost", "root", "", "storiesonline");
 
     //story
-    $selectListStory = "SELECT * FROM products";
+    $selectListStory = "SELECT * FROM story";
 	$listStory = $db->query($selectListStory)->fetch_all();
 
 	$story = array();

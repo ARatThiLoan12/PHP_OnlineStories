@@ -2,7 +2,7 @@
 require_once '../database/connectdatabase.php';
 
 if(isset($_POST['addStory'])){
-    $sql = "INSERT INTO products VALUES (null,'".$_POST['name'] ."','" .$_POST['author']."','". $_POST['type'] ."','" . $_POST['img'] . "','". $_POST['details']."');";
+    $sql = "INSERT INTO story VALUES (null,'".$_POST['name'] ."','" .$_POST['author']."','". $_POST['type'] ."','" . $_POST['img'] . "','". $_POST['details']."');";
     $db->query($sql);
     header('location: adminPage.php');
 }
@@ -13,7 +13,7 @@ if(isset($_POST['addChap'])){
 }
 if(isset($_POST['delete'])){
 	$id = $_POST['delete'];
-	$sql2 = "DELETE FROM products WHERE id=" .$id;
+	$sql2 = "DELETE FROM story WHERE id=" .$id;
 	$db->query($sql2);
 	header("location: adminPage.php");
 }
@@ -22,7 +22,8 @@ if(isset($_POST['edit'])){
 	$name=$_POST['proName'];
 	$author=$_POST['author'];
 	$type=$_POST['type'];
-	$update = "UPDATE products SET proName='".$name."',author='".$author."' ,type='".$type."' WHERE id=".$idEdit;
+	$detail=$_POST['details'];
+	$update = "UPDATE story SET title='".$name."',author='".$author."',type='".$type."',details='".$detail."' WHERE id=".$idEdit;
 	$db->query($update);
 	header("location: adminPage.php");
 }
@@ -58,6 +59,9 @@ if(isset($_POST['editChap'])){
 .dropdown>.dropdown-toggle:active {
 	pointer-events: none;
 }
+.form_button {
+	margin: 5px 0;
+}
 </style>
 </head>
 <body>
@@ -69,15 +73,13 @@ if(isset($_POST['editChap'])){
 					<span class="navbar-toggler-icon"></span>
 				</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="" class="" data-toggle="modal" data-target="#addChap">Add new chapter</a>
-                    <a class="dropdown-item" href="" class="" data-toggle="modal" data-target="#editChap">Edit chapter</a>
                     <a class="dropdown-item" href="deleteAccount.php">Delete user</a>
                     <a class="dropdown-item" href="" class="" data-toggle="modal" data-target="#addStory">Add new story</a>
                 </div>
             </div>
 				<h3 style="color: white">Đọc Truyện Online - Kho Truyện Của Loan</h3>
 				<div id="login">
-					<button class="btn"><a href="firstInterface.php">  
+					<button class="btn"><a href="index.php">  
 						<i class="fas fa-sign-in-alt"></i>LogOut</a></button>
 				</div>
 			</nav>
@@ -85,37 +87,57 @@ if(isset($_POST['editChap'])){
 	</header>
 	<div class="container">
 		<div class="row">
-			<?php for ($i=0; $i < count($story); $i++) { ?>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h1> Danh sách truyện </h1>
+			</div>
 
-				<div class="col-md-4">
-					<div class="product">
-						<div class="img-box ">
-							<?php echo " <img src='../img/".$story[$i]->img."'>"; ?>
-						</div>
-						<div class="details">
-							<h2><?php echo $story[$i]->name; ?><br><?php echo $story[$i]->author; ?></h2>
-							<div class="prich "><?php echo $story[$i]->type; ?></div>
-							<div>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star-half"></i>
-							</div>
-							<p>
-								<?php echo $story[$i]->details; ?>
-							</p>
-							<div class="overlay">
-								<form action="" method="post">
-									<button type="button" name="read" class="btn btn-secondary"><a href="Content.php?id=<?php echo $story[$i]->id; ?>"><i class="fas fa-book-reader"></i></a></button>
-									<button type="submit" name="delete" class="btn btn-secondary" value=<?php echo $story[$i]->id ?>><i class="fas fa-trash-alt"></i></button>
-									<button type="submit" name="editStory" class="btn btn-secondary" value=<?php echo $story[$i]->id ?>><a href="" class="" data-toggle="modal" data-target="#edit<?php echo $story[$i]->id ?>"><i class="fas fa-edit"></i></a></button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			<?php } ?>
+			<table class="table table-striped table-bordered table-hover" style="width:100%">
+				<thead>
+					<tr align="center">
+						<th> ID </th>
+						<th> Title </th>
+						<th> Avatar </th>
+						<th> Author </th>
+						<th> Type </th>
+						<th> Detail </th>
+						<th> Options </th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						for ($i=0; $i < count($story); $i++) { 
+					?>
+					<tr align="center">
+						<td><?php echo $story[$i]->id; ?></td>
+						<td><?php echo $story[$i]->name; ?></td>
+						<td>
+							<img src='../img/<?php echo $story[$i]->img; ?>' width="100px"; height="100px";>
+						</td>
+						<td><?php echo $story[$i]->author; ?></td>
+						<td><?php echo $story[$i]->type; ?></td>
+						<td><?php echo $story[$i]->details; ?></td>
+
+						<td class="center">
+							<form action="" method="post">
+								<a href="content.php?id=<?php echo $story[$i]->id; ?>">
+									<button type="button" name="read" class="btn btn-secondary form_button">
+										<i class="fas fa-book-reader"></i>
+									</button>
+								</a>
+								<a href="" data-toggle="modal" data-target="#edit<?php echo $story[$i]->id ?>">
+									<button type="submit" name="editStory" class="btn btn-secondary form_button" value=<?php echo $story[$i]->id ?>>
+										<i class="fas fa-edit"></i>
+									</button>
+								</a>
+								<button type="submit" name="delete" class="btn btn-secondary form_button" value=<?php echo $story[$i]->id ?>>
+									<i class="fas fa-trash-alt"></i>
+								</button>
+							</form>
+						</td>
+					</tr>
+					<?php } ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<?php require_once 'footer.php' ?>
@@ -124,6 +146,9 @@ if(isset($_POST['editChap'])){
 	    	<div class="modal-dialog">
 	    		<div class="modal-content">
 		        	<form method="post">
+						<div class="modal-header">
+							<h3>Add new story</h3>
+						</div>
 			        	<div class="modal-body">
 							<input type="text" class="form-control" name="name" placeholder="Story name"><br>
 							<input type="text" class="form-control" name="author" placeholder="Author"><br>
@@ -156,14 +181,13 @@ if(isset($_POST['editChap'])){
 		</div>
 	</div>
 
-	<div>
-		<div class="modal fade" id="editChap">
+	<!-- <div>
+		<div class="modal fade" id="editStory">
 	    	<div class="modal-dialog">
 	    		<div class="modal-content">
 		        	<form method="post">
 			        	<div class="modal-body">
 			        		<input type="text" class="form-control" name="id" placeholder="Which story"><br>
-							<input type="text" class="form-control" name="idStory" placeholder="Which story"><br>
 							<input type="text" class="form-control" name="no" placeholder="Number of chapter"><br>
 							<input type="text" class="form-control" name="nameChap" placeholder="Chapter name"><br>
 			          		<button  name="editChap" class="btn btn-danger" style="margin: auto;">Submit</button>  
@@ -172,7 +196,7 @@ if(isset($_POST['editChap'])){
 	    		</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div>
 		<?php for ($i=0; $i < count($story); $i++) { ?>
@@ -180,11 +204,15 @@ if(isset($_POST['editChap'])){
 	    	<div class="modal-dialog">
 	    		<div class="modal-content">
 		        	<form method="post">
+						<div class="modal-header">
+							<h3>Edit the story</h3>
+						</div>
 			        	<div class="modal-body">
 							<input type="text" class="form-control" name="proName" value="<?php echo $story[$i]->name; ?>" placeholder="Story name"><br>
 							<input type="text" class="form-control" name="author" value="<?php echo $story[$i]->author; ?>" placeholder="Author"><br>
-							<input type="text" class="form-control" name="type" value="<?php echo $story[$i]->type; ?>" placeholder="type"><br>
-			          		<button name="edit" value="<?php echo $story[$i]->id; ?>" class="btn btn-danger" style="margin: auto;">Submit</button>  
+							<input type="text" class="form-control" name="type" value="<?php echo $story[$i]->type; ?>" placeholder="Type"><br>
+							<textarea class="form-control" name="details" rows="10" cols="30" placeholder="Details"><?php echo $story[$i]->details;?></textarea><br>
+			          		<button name="edit" value="<?php echo $story[$i]->id; ?>" class="btn btn-primary" style="margin: auto;">Update</button>  
 			      		</div>
 		      		</form>  
 	    		</div>

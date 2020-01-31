@@ -3,9 +3,9 @@
 
     $id = $_GET['id'];
 
-    $sql = "SELECT C.idStory ,C.nameChap, P.proName, P.author, P.type, P.img, P.details, C.id
-	FROM products as P, content as C 
-	WHERE P.id = C.idStory and
+    $sql = "SELECT C.idStory, C.nameChap, S.title, S.author, S.type, S.img, S.details, C.id
+	FROM story as S, content as C 
+	WHERE S.id = C.idStory and
 	C.idStory = ".$id.";";
 	$content=$db->query($sql)->fetch_all();
 
